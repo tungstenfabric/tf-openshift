@@ -26,11 +26,13 @@ git clone https://github.com/progmaticlab/tf-openshift.git
 # Download TF Operator project
 git clone https://github.com/tungstenfabric/tf-operator.git
 
-# Prepare TF Kubernetes manifests
+# Prepare TF Kubernetes manifests (use your cluster and domain names)
 export KUBECONFIG=<installation_directory>/auth/kubeconfig
-export DEPLOYER="openshift"
 export CONTRAIL_CONTAINER_TAG=<Tungsten Fabric UBI images tag>
 export CONTAINER_REGISTR=<Tungsten Fabric UBI images registry>
+export DEPLOYER="openshift"
+export KUBERNETES_CLUSTER_NAME="test1"
+export KUBERNETES_CLUSTER_DOMAIN="example.com"
 ./tf-operator/contrib/render_manifests.sh
 
 # Apply TF manifests
