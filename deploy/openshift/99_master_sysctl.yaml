@@ -1,0 +1,19 @@
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  labels:
+    machineconfiguration.openshift.io/role: master
+  name: 10-master-tf-sysctl
+spec:
+  config:
+    ignition:
+      version: 2.2.0
+    storage:
+      files:
+      - filesystem: root
+        path: /etc/sysctl.d/60-tf-node-init.conf
+        mode: 0644
+        user:
+          name: root
+        contents:
+          source: data:text/plain;charset=utf-8;base64,a2VybmVsLmNvcmVfcGF0dGVybj0vdmFyL2NyYXNoZXMvY29yZS4lZS4lcC4laC4ldApuZXQuaXB2NC50Y3Bfa2VlcGFsaXZlX3RpbWU9NQpuZXQuaXB2NC50Y3Bfa2VlcGFsaXZlX3Byb2Jlcz01Cm5ldC5pcHY0LnRjcF9rZWVwYWxpdmVfaW50dmw9MQp2bS5tYXhfbWFwX2NvdW50PTEyODk2MApuZXQuY29yZS53bWVtX21heD05MTYwMDAwCg==
