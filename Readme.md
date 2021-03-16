@@ -29,18 +29,23 @@ export KUBECONFIG=$INSTALL_DIR/auth/kubeconfig
 export DEPLOYER="openshift"
 export KUBERNETES_CLUSTER_NAME="test1"
 export KUBERNETES_CLUSTER_DOMAIN="example.com"
+export CONTRAIL_REPLICAS=3
 # process manifests (put cluster name, domain etc)
+#   install python3 if missed before:
+#     yum install -y python3
+#     python3 -m pip install jinja2
 ./tf-operator/contrib/render_manifests.sh
 # copy TF CRDs resources
 for i in $(ls ./tf-operator/deploy/crds/) ; do
   cp ./tf-operator/deploy/crds/$i $INSTALL_DIR/manifests/01_$i
 done
 # copy TF operator resources
-for i in namespace service-account role cluster-role role-binding cluster-role-binding operator ; do
+for i in namespace service-account role cluster-role role-binding cluster-role-binding ; do
   cp ./tf-operator/deploy/kustomize/base/operator/$i.yaml $INSTALL_DIR/manifests/02-tf-operator-$i.yaml
 done
+oc kustomize ./tf-operator/deploy/kustomize/operator/templates/ | sed -n 'H; /---/h; ${g;p;}' > $INSTALL_DIR/manifests/02-tf-operator.yaml
 # copy TF reources
-./oc kustomize ./tf-operator/deploy/kustomize/contrail/templates/ > $INSTALL_DIR/manifests/03-tf.yaml
+oc kustomize ./tf-operator/deploy/kustomize/contrail/templates/ > $INSTALL_DIR/manifests/03-tf.yaml
 ```
 
 3. Proceed with main intruction from the step
