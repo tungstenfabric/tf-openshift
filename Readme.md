@@ -1,5 +1,5 @@
- # This project is an add-on to RedHat Openshift Container Platform enabling the deployment with Tungsten Fabric (TF) as SDN
-## The supported Openshift version is 4.5.x
+# This project is an add-on to RedHat Openshift Container Platform enabling the deployment with Tungsten Fabric (TF) as SDN
+The supported Openshift versions are 4.5 and 4.6
 
 # The overall Openshift deploy process is the same as described in [the official Openshift documentation](https://docs.openshift.com/container-platform/4.5/welcome/index.html)
 
@@ -53,3 +53,6 @@ oc kustomize ./tf-operator/deploy/kustomize/contrail/templates/ > $INSTALL_DIR/m
 # Create ignition configs
 ./openshift-install create ignition-configs --dir=<installation_directory>
 ```
+
+
+## [Example of installation on AWS](Readme_aws.md)
