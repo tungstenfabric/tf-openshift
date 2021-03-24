@@ -30,7 +30,7 @@ spec:
             [Unit]
             Description=contrail mount for kernel module
             Wants=network-online.target
-            After=network-online.target ignition-firstboot-complete.service
+            After=network-online.target machine-config-daemon-pull.service
             [Mount]
             Where=/usr/lib/modules
             What=overlay
@@ -44,7 +44,7 @@ spec:
             [Unit]
             Description=contrail mount for scripts
             Wants=network-online.target
-            After=network-online.target ignition-firstboot-complete.service
+            After=network-online.target machine-config-daemon-pull.service
             [Mount]
             Where=/usr/bin
             What=overlay
