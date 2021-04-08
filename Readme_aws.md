@@ -41,6 +41,9 @@ export CONTRAIL_CONTAINER_TAG="nightly"
 #export DEPLOYER_CONTAINER_REGISTRY="docker.io/tungstenfabric"
 # export CONTRAIL_DEPLOYER_CONTAINER_TAG="nightly"
 export CONTRAIL_REPLICAS=3
+
+# Not required. NTP-servers for Chrony.
+export NTP_SERVERS="0.us.pool.ntp.org 1.us.pool.ntp.org"
 ```
 **NOTE**: *KUBERNETES_CLUSTER_NAME* and *KUBERNETES_CLUSTER_DOMAIN* must be exactly the same as it is in install-config.yaml
 
