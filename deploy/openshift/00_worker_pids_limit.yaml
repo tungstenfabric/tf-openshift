@@ -6,8 +6,8 @@ apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfig
 metadata:
   labels:
-    machineconfiguration.openshift.io/role: master
-  name: 10-master-pids-limit
+    machineconfiguration.openshift.io/role: worker
+  name: 10-worker-pids-limit
 spec:
   config:
     ignition:
