@@ -8,7 +8,7 @@ The supported Openshift versions are 4.5 and 4.6
 
 ## The below there are addition steps based on [baremetal installation procedure](https://docs.openshift.com/container-platform/4.5/installing/installing_bare_metal/installing-bare-metal.html)
 
-1. Set networkType param to Contrail in install-config.yaml at the [step creating the installation configuration file](https://docs.openshift.com/container-platform/4.5/installing/installing_bare_metal/installing-bare-metal.html#installation-initializing-manual_installing-bare-metal)
+1. Set networkType param to TF in install-config.yaml at the [step creating the installation configuration file](https://docs.openshift.com/container-platform/4.5/installing/installing_bare_metal/installing-bare-metal.html#installation-initializing-manual_installing-bare-metal)
 
 2. Add TF Openshift manifests right after step of [creation Openshift install manifests](https://docs.openshift.com/container-platform/4.5/installing/installing_bare_metal/installing-bare-metal.html#installation-user-infra-generate-k8s-manifest-ignition_installing-bare-metal)
 

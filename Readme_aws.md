@@ -19,7 +19,7 @@ export INSTALL_DIR=~/openshift-dir
 ./openshift-install create install-config --dir=$INSTALL_DIR
 ```
 In created YAML file under specified directory:
-- change change *networkType* field to *Contrail* in the *networking* section (instead of *OpenshiftSDN*)
+- change change *networkType* field to *TF* in the *networking* section (instead of *OpenshiftSDN*)
 - ajust other cluster settings to your environment if eny
 
 **NOTE**: Master nodes need larger instances.
