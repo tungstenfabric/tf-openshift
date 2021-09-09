@@ -1,0 +1,21 @@
+# [crio.image]
+# insecure_registries = ['{{ INSECURE_REGISTRY }}']
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  labels:
+    machineconfiguration.openshift.io/role: {{ ROLE }}
+  name: {{ ROLE }}s-insecure-registry-config
+spec:
+  config:
+    ignition:
+      version: 2.2.0
+    storage:
+      files:
+      - filesystem: root
+        path: /etc/crio/crio.conf.d/02-insecure-registries.conf
+        mode: 0644
+        user:
+          name: root
+        contents:
+          source: data:text/plain;charset=utf-8;base64,{{ INSECURE_REGISTRY_CONF_BASE64 }}

@@ -16,12 +16,20 @@ fi
 
 install_dir=$1
 
+jinja2="$my_dir/jinja2_render.py"
 if [[ -n "$NTP_SERVERS" ]]; then
-  jinja2="$my_dir/jinja2_render.py"
   export CHRONY_CONF_BASE64="$($jinja2 < $my_dir/../templates/chrony.conf.j2 | base64 -w 0)"
   for i in worker master; do
     export ROLE=$i
     $jinja2 < $my_dir/../templates/chrony-configuration.yaml.j2 > $DEPLOY_DIR/openshift/99_${i}s-chrony-configuration.yaml
+  done
+fi
+
+if [[ -n "${INSECURE_REGISTRY}"]]; then
+  export INSECURE_REGISTRY_CONF_BASE64="$($jinja2 < $my_dir/../templates/insecure.conf.j2 | base64 -w 0)"
+  for i in worker master; do
+    export ROLE=$i
+    $jinja2 < $my_dir/../templates/insecure-cn-registry.yaml.j2 > $DEPLOY_DIR/openshift/99_${i}s-insecure-cn-registry-configuration.yaml
   done
 fi
 
