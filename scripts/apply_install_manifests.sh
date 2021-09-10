@@ -25,7 +25,7 @@ if [[ -n "$NTP_SERVERS" ]]; then
   done
 fi
 
-if [[ -n "${INSECURE_REGISTRY}"]]; then
+if [[ -n "${INSECURE_REGISTRY}" ]]; then
   export INSECURE_REGISTRY_CONF_BASE64="$($jinja2 < $my_dir/../templates/insecure.conf.j2 | base64 -w 0)"
   for i in worker master; do
     export ROLE=$i
